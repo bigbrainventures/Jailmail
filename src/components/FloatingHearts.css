@@ -1,0 +1,41 @@
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  color: #ef4444; /* A warm red color */
+  animation: floatUp 4s forwards;
+  opacity: 0;
+}
+
+/* Keyframes for the floating animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40vh) translateX(-50%) translateX(var(--drift, 0));
+    opacity: 0;
+  }
+}
+
+/* Applying different delays and horizontal drifts to each heart */
+.heart:nth-child(1) { animation-delay: 0s; --drift: 30px; }
+.heart:nth-child(2) { animation-delay: 0.3s; --drift: -20px; font-size: 16px; }
+.heart:nth-child(3) { animation-delay: 0.6s; --drift: 50px; }
+.heart:nth-child(4) { animation-delay: 0.9s; --drift: -40px; font-size: 18px; }
+.heart:nth-child(5) { animation-delay: 1.2s; --drift: 10px; }
+.heart:nth-child(6) { animation-delay: 1.5s; --drift: -50px; font-size: 14px; }
+.heart:nth-child(7) { animation-delay: 1.8s; --drift: 20px; } 
