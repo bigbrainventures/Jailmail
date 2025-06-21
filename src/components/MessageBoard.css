@@ -519,4 +519,36 @@
     margin: 1rem;
     padding: 1.5rem;
   }
+}
+
+.recipient-select-container, .new-message-container {
+  margin-bottom: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .message-board {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .form-container,
+  .post-history {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    height: auto;
+    max-height: none;
+    border-left: none;
+  }
+
+  .message-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .send-button {
+    width: 100%;
+  }
 } 

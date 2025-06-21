@@ -24,6 +24,8 @@ function MessageBoard() {
   })
 
   const [showHearts, setShowHearts] = useState(false)
+  const [isSending, setIsSending] = useState(false)
+  const [justSent, setJustSent] = useState(false)
 
   // Get current user when component loads
   useEffect(() => {
@@ -225,8 +227,7 @@ function MessageBoard() {
       return
     }
 
-    setLoading(true)
-    setUploading(true)
+    setIsSending(true)
 
     try {
       let photoUrl = null
@@ -261,13 +262,15 @@ function MessageBoard() {
         // Trigger floating hearts!
         setShowHearts(true)
         setTimeout(() => setShowHearts(false), 4000) // Hide after 4 seconds (the animation duration)
+
+        setJustSent(true)
+        setTimeout(() => setJustSent(false), 2000)
       }
     } catch (error) {
       console.error('Error:', error)
       alert('Error sending your letter')
     } finally {
-      setLoading(false)
-      setUploading(false)
+      setIsSending(false)
     }
   }
 
@@ -423,14 +426,14 @@ function MessageBoard() {
                 <button 
                   type="submit" 
                   className="post-btn"
-                  disabled={loading || !selectedRecipient || (!newMessage.trim() && !selectedFile)}
+                  disabled={isSending || !selectedRecipient || (!newMessage.trim() && !selectedFile)}
                 >
-                  {uploading ? (
+                  {isSending ? (
                     <div className="loading-spinner"></div>
                   ) : (
                     <>
                       <Send size={16} />
-                      Send Letter
+                      {justSent ? '✓ Letter Sent!' : 'Send Letter'}
                     </>
                   )}
                 </button>
