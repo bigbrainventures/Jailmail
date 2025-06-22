@@ -6,8 +6,31 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './MessageBoard.css'
 
-// Define the custom fonts we want to use
-const fonts = ['Arial', 'Georgia', 'Verdana', 'Courier New', 'Lucida Console'];
+// --- Font Configuration ---
+// A curated list of 50 unique and expressive fonts.
+// Font names with spaces are hyphenated to work correctly as CSS classes.
+const fonts = [
+  // Serif
+  'Georgia', 'Times-New-Roman', 'Garamond', 'Palatino', 'Playfair-Display', 
+  'Merriweather', 'Lora', 'Bitter', 'Crimson-Text', 'EB-Garamond',
+
+  // Sans-Serif
+  'Arial', 'Verdana', 'Helvetica', 'Roboto', 'Open-Sans', 'Lato', 
+  'Montserrat', 'Oswald', 'Raleway', 'Ubuntu',
+
+  // Monospace
+  'Courier-New', 'Lucida-Console', 'Monaco', 'Inconsolata', 'Source-Code-Pro',
+
+  // Script & Handwriting
+  'Lobster', 'Pacifico', 'Caveat', 'Dancing-Script', 'Great-Vibes',
+  'Sacramento', 'Tangerine', 'Allura', 'Alex-Brush', 'Kalam',
+
+  // Display & Unique
+  'Impact', 'Comic-Sans-MS', 'Anton', 'Alfa-Slab-One', 'Bebas-Neue',
+  'Fredoka-One', 'Luckiest-Guy', 'Press-Start-2P', 'Abril-Fatface', 'Comfortaa'
+];
+
+// Add the fonts to the editor's whitelist
 const Font = ReactQuill.Quill.import('formats/font');
 Font.whitelist = fonts;
 ReactQuill.Quill.register(Font, true);
