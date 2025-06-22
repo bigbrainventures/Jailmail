@@ -248,29 +248,9 @@
 .message-input-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
-.message-input {
-  width: 100%;
-  padding: 1rem;
-  border: 2px solid #e1e5e9;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-family: inherit;
-  resize: vertical;
-  min-height: 150px;
-  transition: all 0.3s ease;
-  background: white;
-}
-
-.message-input:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-.form-actions {
+.form-actions-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -496,7 +476,7 @@
     justify-content: center;
   }
   
-  .form-actions {
+  .form-actions-bottom {
     flex-direction: column;
     align-items: stretch;
   }
@@ -555,27 +535,24 @@
 
 /* === Rich Text Editor (Quill) Styles === */
 
-/* Style the toolbar to be clean and sharp */
-.new-message-container .ql-toolbar {
+.message-input-container .ql-toolbar {
   background-color: #f8f9fa;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   border-color: #dee2e6 !important;
 }
 
-/* Set a fixed, large height for the editor container */
-.new-message-container .ql-container {
-  height: 50vh !important; /* Large editor height */
+.message-input-container .ql-container {
   font-size: 16px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border-color: #dee2e6 !important;
   background-color: #ffffff;
+  height: 100px;
 }
 
 /* --- Font Styles for Quill Editor --- */
 
-/* Allow the font dropdown to expand to show the full font name */
 .ql-snow .ql-picker.ql-font { 
   width: auto !important; 
   white-space: nowrap; 
@@ -585,18 +562,10 @@
   padding-right: 25px !important; 
 }
 
-/* Make the font selection dropdown scrollable */
 .ql-snow .ql-picker.ql-font .ql-picker-options {
-  max-height: 250px; /* Adjust this value to show more/fewer items before scrolling */
-  overflow-y: auto; /* Add vertical scrollbar when content exceeds max-height */
+  max-height: 250px;
+  overflow-y: auto;
 }
-
-/* 
-  For each font, we define two rules:
-  1. A `::before` rule to show the font name in the dropdown menu.
-  2. A `.ql-font-` class to apply the font to the text in the editor.
-  The font value (e.g., 'Times-New-Roman') must match the value in the `fonts` array in MessageBoard.js
-*/
 
 /* Serif */
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Georgia"]::before, .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Georgia"]::before { content: 'Georgia'; font-family: 'Georgia', serif; }
