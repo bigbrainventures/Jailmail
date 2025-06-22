@@ -1,26 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { supabase } from '../supabase'
 import './Login.css'
 
 function Login() {
-  // --- TEMPORARY DEBUGGING ---
-  // This will help us verify if Vercel is loading the environment variables correctly.
-  useEffect(() => {
-    console.log(
-      'DEBUG: Supabase URL loaded:', 
-      process.env.REACT_APP_SUPABASE_URL 
-        ? `${process.env.REACT_APP_SUPABASE_URL.substring(0, 20)}...` 
-        : 'Not Found'
-    );
-    console.log(
-      'DEBUG: Supabase Key loaded:', 
-      process.env.REACT_APP_SUPABASE_ANON_KEY 
-        ? `${process.env.REACT_APP_SUPABASE_ANON_KEY.substring(0, 10)}...`
-        : 'Not Found'
-    );
-  }, []);
-  // --- END OF DEBUGGING CODE ---
-
   // State to track form inputs and loading state
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

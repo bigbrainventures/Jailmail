@@ -2,7 +2,15 @@ import React, { useState, useEffect, useRef } from 'react'
 import { supabase, getCurrentUser } from '../supabase'
 import { Upload, Send, Image as ImageIcon, User, Plus, MapPin } from 'lucide-react'
 import FloatingHearts from './FloatingHearts'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 import './MessageBoard.css'
+
+// Define the custom fonts we want to use
+const fonts = ['Arial', 'Georgia', 'Verdana', 'Courier New', 'Lucida Console'];
+const Font = ReactQuill.Quill.import('formats/font');
+Font.whitelist = fonts;
+ReactQuill.Quill.register(Font, true);
 
 function MessageBoard() {
   // State to track messages, form inputs, and loading states
@@ -26,6 +34,18 @@ function MessageBoard() {
   const [showHearts, setShowHearts] = useState(false)
   const [isSending, setIsSending] = useState(false)
   const [justSent, setJustSent] = useState(false)
+
+  // Custom toolbar configuration for the text editor
+  const modules = {
+    toolbar: [
+      [{ 'font': fonts }],
+      [{ 'header': [1, 2, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{'list': 'ordered'}, {'list': 'bullet'}],
+      ['link'],
+      ['clean']
+    ],
+  }
 
   // Get current user when component loads
   useEffect(() => {
@@ -391,12 +411,12 @@ function MessageBoard() {
             )}
 
             <div className="message-input-container">
-              <textarea
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Write your letter here... Share your thoughts, news, or just let them know you're thinking of them."
-                className="message-input"
-                rows="6"
+              <ReactQuill 
+                theme="snow" 
+                value={newMessage} 
+                onChange={setNewMessage}
+                modules={modules}
+                placeholder="Start writing your letter here..."
               />
               
               <div className="form-actions">

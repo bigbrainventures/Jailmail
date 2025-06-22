@@ -195,7 +195,10 @@ function MyPosts() {
                       
                       {post.content && (
                         <div className="post-content">
-                          {post.content}
+                          <div 
+                            className="message-text" 
+                            dangerouslySetInnerHTML={{ __html: post.content }} 
+                          />
                         </div>
                       )}
                       
