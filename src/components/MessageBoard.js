@@ -488,13 +488,7 @@ function MessageBoard() {
         </div>
 
         <div className="messages-container">
-          {messages.length === 0 ? (
-            <div className="no-messages">
-              <div className="no-messages-icon">📝</div>
-              <h3>Start Writing</h3>
-              <p>Write your first letter to share your thoughts and stay connected.</p>
-            </div>
-          ) : (
+          {messages.length === 0 ? null : (
             <div className="recent-letters">
               <h3>Recent Letters</h3>
               {messages.map((message) => (
@@ -506,13 +500,11 @@ function MessageBoard() {
                     </div>
                     <span className="timestamp">{formatTime(message.created_at)}</span>
                   </div>
-                  
                   {message.content && (
                     <div className="message-content">
                       {message.content}
                     </div>
                   )}
-                  
                   {message.photo_url && (
                     <div className="message-photo">
                       <img 

@@ -4,29 +4,35 @@
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+  font-family: 'Bangers', cursive;
 }
 
 /* Header styles */
 .recipients-header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
   border-radius: 20px;
+  border: 4px solid #00e676;
+  box-shadow: 10px 10px 0px rgba(0,230,118,0.15), 15px 15px 20px rgba(0,230,118,0.25);
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .recipients-header h2 {
-  color: #333;
-  font-size: 2rem;
-  font-weight: 700;
+  font-family: 'Bangers', cursive;
+  color: #fff;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 0px #000, 4px 4px 0px #00c853;
   margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
 
 .subtitle {
-  color: #666;
-  font-size: 1rem;
+  color: #00e676;
+  font-size: 1.2rem;
+  font-family: 'Bangers', cursive;
+  text-shadow: 1px 1px 0px #000;
 }
 
 /* Loading state */
@@ -52,12 +58,12 @@
 
 /* Form container */
 .recipient-form-container {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
   border-radius: 20px;
+  border: 4px solid #00e676;
+  box-shadow: 10px 10px 0px rgba(0,230,118,0.15), 15px 15px 20px rgba(0,230,118,0.25);
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .form-header {
@@ -109,30 +115,31 @@
 }
 
 .form-group label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #333;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-family: 'Bangers', cursive;
+  color: #ffd600;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 0px #000;
 }
 
 .form-group input,
 .form-group textarea {
-  padding: 1rem;
-  border: 2px solid #e1e5e9;
+  background: #222;
+  color: #fff;
+  border: 2px solid #00e676;
   border-radius: 12px;
+  font-family: 'Bangers', cursive;
   font-size: 1rem;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  background: white;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 10px #00e67633;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #ffd600;
+  box-shadow: 0 0 0 3px #ffd60033;
 }
 
 .form-group textarea {
@@ -147,20 +154,26 @@
   margin-top: 1rem;
 }
 
-.cancel-btn {
-  padding: 0.75rem 1.5rem;
-  background: #f8f9fa;
-  border: 2px solid #e1e5e9;
-  border-radius: 8px;
+.cancel-btn, .add-btn, .add-first-btn {
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  border-radius: 999px;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(0,230,118,0.15);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
-  font-weight: 600;
-  color: #666;
-  transition: all 0.3s ease;
+  transition: background 0.15s, transform 0.13s, box-shadow 0.13s;
 }
 
-.cancel-btn:hover {
-  background: #e9ecef;
-  border-color: #adb5bd;
+.cancel-btn:hover, .add-btn:hover, .add-first-btn:hover {
+  background: linear-gradient(135deg, #ffd600 0%, #ff8f00 100%);
+  color: #222;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(255,214,0,0.18);
 }
 
 .save-btn {
@@ -181,9 +194,10 @@
 
 /* Recipients content */
 .recipients-content {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
   border-radius: 20px;
+  border: 4px solid #00e676;
+  box-shadow: 10px 10px 0px rgba(0,230,118,0.15), 15px 15px 20px rgba(0,230,118,0.25);
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -280,18 +294,20 @@
 
 /* Recipient cards */
 .recipient-card {
-  background: #f8f9fa;
-  border: 1px solid #e1e5e9;
-  border-radius: 12px;
+  background: linear-gradient(145deg, #232526, #1a1a1a);
+  border: 3px solid #00e676;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,230,118,0.10);
+  color: #fff;
+  font-family: 'Bangers', cursive;
   padding: 1.5rem;
-  transition: all 0.3s ease;
-  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s;
 }
 
 .recipient-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border-color: #667eea;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 32px rgba(0,230,118,0.18);
+  border-color: #ffd600;
 }
 
 .recipient-info {
@@ -301,21 +317,14 @@
 }
 
 .recipient-name {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: #333;
+  color: #00e676;
   font-size: 1.1rem;
+  text-shadow: 1px 1px 0px #000;
 }
 
 .recipient-address {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  color: #666;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  color: #fff;
+  font-size: 0.95rem;
 }
 
 .recipient-address span {
@@ -359,11 +368,11 @@
 }
 
 .edit-btn {
-  color: #667eea;
+  color: #00e676;
 }
 
 .edit-btn:hover {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(0,230,118,0.1);
 }
 
 .delete-btn {

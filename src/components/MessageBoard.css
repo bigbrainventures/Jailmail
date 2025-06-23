@@ -1,3 +1,9 @@
+body, .message-board-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+  min-height: 100vh;
+  font-family: 'Bangers', cursive;
+}
+
 .message-board {
   flex: 1;
   padding: 2rem;
@@ -13,26 +19,33 @@
 }
 
 .write-header h2 {
-  color: #333;
-  font-size: 2rem;
-  font-weight: 700;
+  font-family: 'Bangers', cursive;
+  color: #fff;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 0px #000, 4px 4px 0px #ff1744;
   margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
 
 .write-header p {
-  color: #666;
-  font-size: 1rem;
-  line-height: 1.6;
+  color: #00e676;
+  font-size: 1.2rem;
+  font-family: 'Bangers', cursive;
+  text-shadow: 1px 1px 0px #000;
 }
 
 /* Post form styles */
 .post-form-container {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
   border-radius: 20px;
+  border: 4px solid #ff6b35;
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.3), 15px 15px 20px rgba(0,0,0,0.5);
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
 .post-form {
@@ -48,13 +61,11 @@
   gap: 0.5rem;
 }
 
-.recipient-selection label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #333;
-  font-weight: 600;
-  font-size: 0.9rem;
+.recipient-selection label, .form-group label {
+  font-family: 'Bangers', cursive;
+  color: #ffd600;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 0px #000;
 }
 
 .recipient-controls {
@@ -63,186 +74,53 @@
   align-items: center;
 }
 
-.recipient-select {
-  flex: 1;
-  padding: 0.75rem;
-  border: 2px solid #e1e5e9;
-  border-radius: 8px;
-  font-size: 1rem;
-  background: white;
-  transition: all 0.3s ease;
-}
-
-.recipient-select:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-.add-recipient-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: #f8f9fa;
-  border: 2px solid #e1e5e9;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: #666;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.add-recipient-btn:hover {
-  background: #e9ecef;
-  border-color: #667eea;
-  color: #667eea;
-}
-
-/* Recipient form modal */
-.recipient-form-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-
-.recipient-form-modal {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  max-width: 500px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #e1e5e9;
-}
-
-.form-header h3 {
-  color: #333;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.close-btn {
-  background: #f8f9fa;
-  border: 1px solid #e1e5e9;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  font-size: 16px;
-  color: #666;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.close-btn:hover {
-  background: #e9ecef;
-  color: #333;
-}
-
-/* Recipient form styles */
-.recipient-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-group label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #333;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 1rem;
-  border: 2px solid #e1e5e9;
+.recipient-select, .form-group input, .form-group textarea {
+  background: #222;
+  color: #fff;
+  border: 2px solid #00e676;
   border-radius: 12px;
+  font-family: 'Bangers', cursive;
   font-size: 1rem;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  background: white;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 10px #00e67633;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.recipient-select:focus, .form-group input:focus, .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px #ff6b3533;
 }
 
-.form-group textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-.form-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 1rem;
-}
-
-.cancel-btn {
-  padding: 0.75rem 1.5rem;
-  background: #f8f9fa;
-  border: 2px solid #e1e5e9;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  color: #666;
-  transition: all 0.3s ease;
-}
-
-.cancel-btn:hover {
-  background: #e9ecef;
-  border-color: #adb5bd;
-}
-
-.save-btn {
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.add-recipient-btn, .upload-btn, .post-btn, .save-btn, .cancel-btn {
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  border-radius: 999px;
   border: none;
-  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff1744 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(255, 107, 53, 0.15);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
-  font-weight: 600;
-  color: white;
-  transition: all 0.3s ease;
+  transition: background 0.15s, transform 0.13s, box-shadow 0.13s;
+}
+.add-recipient-btn:hover, .upload-btn:hover, .post-btn:hover, .save-btn:hover, .cancel-btn:hover {
+  background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(0,230,118,0.18);
 }
 
-.save-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+.post-btn {
+  background: linear-gradient(135deg, #ffd600 0%, #ff8f00 100%);
+  color: #222;
+  box-shadow: 0 4px 18px rgba(255, 214, 0, 0.15);
+}
+.post-btn:hover {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff1744 100%);
+  color: #fff;
 }
 
 .message-input-container {
@@ -303,25 +181,6 @@
   transform: scale(1.1);
 }
 
-.post-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.post-btn:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-}
-
 .post-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -336,12 +195,14 @@
 }
 
 .no-messages {
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+  border-radius: 20px;
+  border: 3px solid #ff6b35;
+  color: #fff;
+  font-family: 'Bangers', cursive;
+  text-shadow: 1px 1px 0px #000;
   text-align: center;
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  color: #666;
   font-size: 1.1rem;
 }
 
@@ -372,11 +233,14 @@
 
 /* Individual message cards */
 .message-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
   border-radius: 16px;
+  border: 3px solid #ffd600;
+  box-shadow: 0 5px 20px rgba(255, 214, 0, 0.15);
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-family: 'Bangers', cursive;
   padding: 1.5rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -399,9 +263,14 @@
   gap: 0.25rem;
 }
 
+.author, .recipient, .timestamp {
+  color: #00e676;
+  font-family: 'Bangers', cursive;
+  text-shadow: 1px 1px 0px #000;
+}
+
 .author {
   font-weight: 600;
-  color: #333;
   font-size: 0.9rem;
 }
 
@@ -417,7 +286,9 @@
 }
 
 .message-content {
-  color: #333;
+  color: #fff;
+  text-shadow: 1px 1px 0px #000;
+  font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
   white-space: pre-wrap;
@@ -536,19 +407,46 @@
 /* === Rich Text Editor (Quill) Styles === */
 
 .message-input-container .ql-toolbar {
-  background-color: #f8f9fa;
+  background-color: #222;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  border-color: #dee2e6 !important;
+  border-color: #00e676 !important;
+  color: #fff;
+}
+
+/* Make Quill toolbar icons, buttons, and dropdowns white */
+.message-input-container .ql-toolbar .ql-picker,
+.message-input-container .ql-toolbar .ql-picker-label,
+.message-input-container .ql-toolbar .ql-picker-item,
+.message-input-container .ql-toolbar button {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+.message-input-container .ql-toolbar .ql-picker-options {
+  background: #222;
+  color: #fff;
+}
+
+.message-input-container .ql-toolbar .ql-picker-item.ql-selected,
+.message-input-container .ql-toolbar .ql-picker-label.ql-active {
+  color: #00e676 !important;
 }
 
 .message-input-container .ql-container {
   font-size: 16px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  border-color: #dee2e6 !important;
-  background-color: #ffffff;
+  border-color: #00e676 !important;
+  background-color: #181818;
+  color: #fff;
   height: 100px;
+  box-shadow: 0 0 10px #00e67633;
+}
+
+/* Neon glowing effect for focus */
+.message-input-container .ql-container:focus-within {
+  box-shadow: 0 0 0 3px #ff6b3533;
 }
 
 /* --- Font Styles for Quill Editor --- */
@@ -661,4 +559,23 @@
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Abril-Fatface"]::before, .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Abril-Fatface"]::before { content: 'Abril Fatface'; font-family: 'Abril Fatface', cursive; }
 .ql-font-Abril-Fatface { font-family: 'Abril Fatface', cursive; }
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Comfortaa"]::before, .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Comfortaa"]::before { content: 'Comfortaa'; font-family: 'Comfortaa', cursive; }
-.ql-font-Comfortaa { font-family: 'Comfortaa', cursive; } 
+.ql-font-Comfortaa { font-family: 'Comfortaa', cursive; }
+
+.message-input-container .ql-toolbar svg,
+.message-input-container .ql-toolbar button svg,
+.message-input-container .ql-toolbar .ql-stroke,
+.message-input-container .ql-toolbar .ql-fill {
+  fill: #fff !important;
+  stroke: #fff !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.message-input-container .ql-toolbar button:not([disabled]) {
+  opacity: 1 !important;
+  color: #fff !important;
+}
+
+.message-input-container .ql-toolbar button[disabled] svg {
+  opacity: 0.3 !important;
+} 
