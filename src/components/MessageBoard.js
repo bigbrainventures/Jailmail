@@ -5,6 +5,7 @@ import FloatingHearts from './FloatingHearts'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './MessageBoard.css'
+import GoBackButton from './GoBackButton'
 
 // --- Font Configuration ---
 // A curated list of 50 unique and expressive fonts.
@@ -324,6 +325,7 @@ function MessageBoard() {
 
   return (
     <div className="message-board-container">
+      <GoBackButton />
       {showHearts && <FloatingHearts />}
       <div className="message-board">
         <div className="post-form-container">

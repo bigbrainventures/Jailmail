@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { supabase, getCurrentUser } from '../supabase'
 import { Plus, Edit2, Trash2, User, MapPin, Mail } from 'lucide-react'
 import './Recipients.css'
+import GoBackButton from './GoBackButton'
 
 function Recipients() {
   // State to track recipients, form inputs, and loading state
@@ -213,159 +214,162 @@ function Recipients() {
   }
 
   return (
-    <div className="recipients">
-      <div className="recipients-header">
-        <h2>Recipients</h2>
-        <p className="subtitle">Manage the people you write letters to</p>
-      </div>
-
-      {/* Error Display */}
-      {error && (
-        <div className="error-message">
-          <p>⚠️ {error}</p>
-          <button onClick={() => setError(null)}>✕</button>
+    <div className="recipients-container">
+      <GoBackButton />
+      <div className="recipients">
+        <div className="recipients-header">
+          <h2>Recipients</h2>
+          <p className="subtitle">Manage the people you write letters to</p>
         </div>
-      )}
 
-      {/* Add/Edit Form */}
-      {showForm && (
-        <div className="recipient-form-container">
-          <div className="form-header">
-            <h3>{editingId ? 'Edit Recipient' : 'Add New Recipient'}</h3>
-            <button 
-              onClick={resetForm}
-              className="close-btn"
-            >
-              ✕
-            </button>
+        {/* Error Display */}
+        {error && (
+          <div className="error-message">
+            <p>⚠️ {error}</p>
+            <button onClick={() => setError(null)}>✕</button>
           </div>
-          
-          <form onSubmit={handleSubmit} className="recipient-form">
-            <div className="form-group">
-              <label htmlFor="name">
-                <User size={16} />
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Enter recipient's full name"
-                required
-              />
-            </div>
+        )}
 
-            <div className="form-group">
-              <label htmlFor="address">
-                <MapPin size={16} />
-                Address
-              </label>
-              <textarea
-                id="address"
-                name="address"
-                value={formData.address}
-                onChange={handleInputChange}
-                placeholder="Enter complete address including facility name, unit number, etc."
-                rows="4"
-                required
-              />
-            </div>
-
-            <div className="form-actions">
+        {/* Add/Edit Form */}
+        {showForm && (
+          <div className="recipient-form-container">
+            <div className="form-header">
+              <h3>{editingId ? 'Edit Recipient' : 'Add New Recipient'}</h3>
               <button 
-                type="button" 
                 onClick={resetForm}
-                className="cancel-btn"
+                className="close-btn"
               >
-                Cancel
-              </button>
-              <button 
-                type="submit" 
-                className="save-btn"
-              >
-                {editingId ? 'Update' : 'Add Recipient'}
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-
-      {/* Recipients List */}
-      <div className="recipients-content">
-        {recipients.length === 0 ? (
-          <div className="no-recipients">
-            <div className="no-recipients-icon">
-              <Mail size={48} />
-            </div>
-            <h3>No recipients yet</h3>
-            <p>Add recipients to easily manage who you're writing letters to.</p>
-            <button 
-              onClick={() => setShowForm(true)}
-              className="add-first-btn"
-            >
-              <Plus size={16} />
-              Add Your First Recipient
-            </button>
-          </div>
-        ) : (
-          <div className="recipients-list">
-            <div className="list-header">
-              <h3>Your Recipients ({recipients.length})</h3>
-              <button 
-                onClick={() => setShowForm(true)}
-                className="add-btn"
-              >
-                <Plus size={16} />
-                Add Recipient
+                ✕
               </button>
             </div>
             
-            <div className="recipients-grid">
-              {recipients.map((recipient) => (
-                <div key={recipient.id} className="recipient-card">
-                  <div className="recipient-info">
-                    <div className="recipient-name">
-                      <User size={16} />
-                      <span>{recipient.name}</span>
-                    </div>
-                    <div className="recipient-address">
-                      <MapPin size={14} />
-                      <span>{recipient.address}</span>
-                    </div>
-                    <div className="recipient-stats">
-                      <Mail size={14} />
-                      <span>
-                        {recipient.message_count} letter{recipient.message_count !== 1 ? 's' : ''} sent
-                      </span>
-                    </div>
-                    <div className="recipient-date">
-                      Added: {formatDate(recipient.created_at)}
-                    </div>
-                  </div>
-                  
-                  <div className="recipient-actions">
-                    <button
-                      onClick={() => handleEdit(recipient)}
-                      className="edit-btn"
-                      title="Edit recipient"
-                    >
-                      <Edit2 size={14} />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(recipient.id)}
-                      className="delete-btn"
-                      title="Delete recipient"
-                    >
-                      <Trash2 size={14} />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <form onSubmit={handleSubmit} className="recipient-form">
+              <div className="form-group">
+                <label htmlFor="name">
+                  <User size={16} />
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Enter recipient's full name"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="address">
+                  <MapPin size={16} />
+                  Address
+                </label>
+                <textarea
+                  id="address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                  placeholder="Enter complete address including facility name, unit number, etc."
+                  rows="4"
+                  required
+                />
+              </div>
+
+              <div className="form-actions">
+                <button 
+                  type="button" 
+                  onClick={resetForm}
+                  className="cancel-btn"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit" 
+                  className="save-btn"
+                >
+                  {editingId ? 'Update' : 'Add Recipient'}
+                </button>
+              </div>
+            </form>
           </div>
         )}
+
+        {/* Recipients List */}
+        <div className="recipients-content">
+          {recipients.length === 0 ? (
+            <div className="no-recipients">
+              <div className="no-recipients-icon">
+                <Mail size={48} />
+              </div>
+              <h3>No recipients yet</h3>
+              <p>Add recipients to easily manage who you're writing letters to.</p>
+              <button 
+                onClick={() => setShowForm(true)}
+                className="add-first-btn"
+              >
+                <Plus size={16} />
+                Add Your First Recipient
+              </button>
+            </div>
+          ) : (
+            <div className="recipients-list">
+              <div className="list-header">
+                <h3>Your Recipients ({recipients.length})</h3>
+                <button 
+                  onClick={() => setShowForm(true)}
+                  className="add-btn"
+                >
+                  <Plus size={16} />
+                  Add Recipient
+                </button>
+              </div>
+              
+              <div className="recipients-grid">
+                {recipients.map((recipient) => (
+                  <div key={recipient.id} className="recipient-card">
+                    <div className="recipient-info">
+                      <div className="recipient-name">
+                        <User size={16} />
+                        <span>{recipient.name}</span>
+                      </div>
+                      <div className="recipient-address">
+                        <MapPin size={14} />
+                        <span>{recipient.address}</span>
+                      </div>
+                      <div className="recipient-stats">
+                        <Mail size={14} />
+                        <span>
+                          {recipient.message_count} letter{recipient.message_count !== 1 ? 's' : ''} sent
+                        </span>
+                      </div>
+                      <div className="recipient-date">
+                        Added: {formatDate(recipient.created_at)}
+                      </div>
+                    </div>
+                    
+                    <div className="recipient-actions">
+                      <button
+                        onClick={() => handleEdit(recipient)}
+                        className="edit-btn"
+                        title="Edit recipient"
+                      >
+                        <Edit2 size={14} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(recipient.id)}
+                        className="delete-btn"
+                        title="Delete recipient"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

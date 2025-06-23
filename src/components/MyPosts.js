@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { supabase, getCurrentUser } from '../supabase'
 import { Calendar, Clock, Image as ImageIcon, MessageSquare, User } from 'lucide-react'
 import './MyPosts.css'
+import GoBackButton from './GoBackButton'
 
 function MyPosts() {
   // State to track user's posts and loading state
@@ -114,112 +115,115 @@ function MyPosts() {
   }
 
   return (
-    <div className="my-posts">
-      <div className="my-posts-header">
-        <h2>My Letters</h2>
-        <p className="subtitle">View and manage your past letters and photos</p>
-      </div>
-
-      {/* Tab Navigation */}
-      <div className="tabs-container">
-        <div className="tabs">
-          <button
-            className={`tab ${activeTab === 'all' ? 'active' : ''}`}
-            onClick={() => setActiveTab('all')}
-          >
-            <MessageSquare size={16} />
-            All Letters ({getPostCount('all')})
-          </button>
-          <button
-            className={`tab ${activeTab === 'text' ? 'active' : ''}`}
-            onClick={() => setActiveTab('text')}
-          >
-            <MessageSquare size={16} />
-            Text Only ({getPostCount('text')})
-          </button>
-          <button
-            className={`tab ${activeTab === 'photos' ? 'active' : ''}`}
-            onClick={() => setActiveTab('photos')}
-          >
-            <ImageIcon size={16} />
-            Photos ({getPostCount('photos')})
-          </button>
+    <div className="myposts-container">
+      <GoBackButton />
+      <div className="my-posts">
+        <div className="my-posts-header">
+          <h2>My Letters</h2>
+          <p className="subtitle">View and manage your past letters and photos</p>
         </div>
-      </div>
 
-      {/* Posts Content */}
-      <div className="posts-content">
-        {filteredPosts.length === 0 ? (
-          <div className="no-posts">
-            <div className="no-posts-icon">
-              {activeTab === 'photos' ? <ImageIcon size={48} /> : <MessageSquare size={48} />}
-            </div>
-            <h3>No {activeTab === 'all' ? '' : activeTab} letters yet</h3>
-            <p>
-              {activeTab === 'photos' 
-                ? "You haven't sent any photos yet. Share some moments with your loved one!"
-                : activeTab === 'text'
-                ? "You haven't written any letters yet. Start sharing your thoughts!"
-                : "You haven't sent any letters yet. Start writing to stay connected!"
-              }
-            </p>
+        {/* Tab Navigation */}
+        <div className="tabs-container">
+          <div className="tabs">
+            <button
+              className={`tab ${activeTab === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveTab('all')}
+            >
+              <MessageSquare size={16} />
+              All Letters ({getPostCount('all')})
+            </button>
+            <button
+              className={`tab ${activeTab === 'text' ? 'active' : ''}`}
+              onClick={() => setActiveTab('text')}
+            >
+              <MessageSquare size={16} />
+              Text Only ({getPostCount('text')})
+            </button>
+            <button
+              className={`tab ${activeTab === 'photos' ? 'active' : ''}`}
+              onClick={() => setActiveTab('photos')}
+            >
+              <ImageIcon size={16} />
+              Photos ({getPostCount('photos')})
+            </button>
           </div>
-        ) : (
-          <div className="posts-timeline">
-            {Object.entries(groupedPosts).map(([date, posts]) => (
-              <div key={date} className="date-group">
-                <div className="date-header">
-                  <Calendar size={16} />
-                  <span className="date-label">{date}</span>
-                  <span className="post-count">({posts.length} letter{posts.length !== 1 ? 's' : ''})</span>
-                </div>
-                
-                <div className="posts-for-date">
-                  {posts.map((post) => (
-                    <div key={post.id} className="post-item">
-                      <div className="post-header">
-                        <div className="post-time">
-                          <Clock size={14} />
-                          <span>{formatTime(post.created_at)}</span>
-                        </div>
-                        <div className="post-type">
-                          {post.photo_url && <ImageIcon size={14} />}
-                          {post.content && <MessageSquare size={14} />}
-                        </div>
-                      </div>
-                      
-                      <div className="post-recipient">
-                        <User size={14} />
-                        <span>To: {post.recipients?.name || 'Unknown Recipient'}</span>
-                      </div>
-                      
-                      {post.content && (
-                        <div className="post-content">
-                          <div 
-                            className="message-text" 
-                            dangerouslySetInnerHTML={{ __html: post.content }} 
-                          />
-                        </div>
-                      )}
-                      
-                      {post.photo_url && (
-                        <div className="post-photo">
-                          <img 
-                            src={post.photo_url} 
-                            alt="Letter attachment"
-                            onError={(e) => {
-                              e.target.style.display = 'none'
-                            }}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+        </div>
+
+        {/* Posts Content */}
+        <div className="posts-content">
+          {filteredPosts.length === 0 ? (
+            <div className="no-posts">
+              <div className="no-posts-icon">
+                {activeTab === 'photos' ? <ImageIcon size={48} /> : <MessageSquare size={48} />}
               </div>
-            ))}
-          </div>
-        )}
+              <h3>No {activeTab === 'all' ? '' : activeTab} letters yet</h3>
+              <p>
+                {activeTab === 'photos' 
+                  ? "You haven't sent any photos yet. Share some moments with your loved one!"
+                  : activeTab === 'text'
+                  ? "You haven't written any letters yet. Start sharing your thoughts!"
+                  : "You haven't sent any letters yet. Start writing to stay connected!"
+                }
+              </p>
+            </div>
+          ) : (
+            <div className="posts-timeline">
+              {Object.entries(groupedPosts).map(([date, posts]) => (
+                <div key={date} className="date-group">
+                  <div className="date-header">
+                    <Calendar size={16} />
+                    <span className="date-label">{date}</span>
+                    <span className="post-count">({posts.length} letter{posts.length !== 1 ? 's' : ''})</span>
+                  </div>
+                  
+                  <div className="posts-for-date">
+                    {posts.map((post) => (
+                      <div key={post.id} className="post-item">
+                        <div className="post-header">
+                          <div className="post-time">
+                            <Clock size={14} />
+                            <span>{formatTime(post.created_at)}</span>
+                          </div>
+                          <div className="post-type">
+                            {post.photo_url && <ImageIcon size={14} />}
+                            {post.content && <MessageSquare size={14} />}
+                          </div>
+                        </div>
+                        
+                        <div className="post-recipient">
+                          <User size={14} />
+                          <span>To: {post.recipients?.name || 'Unknown Recipient'}</span>
+                        </div>
+                        
+                        {post.content && (
+                          <div className="post-content">
+                            <div 
+                              className="message-text" 
+                              dangerouslySetInnerHTML={{ __html: post.content }} 
+                            />
+                          </div>
+                        )}
+                        
+                        {post.photo_url && (
+                          <div className="post-photo">
+                            <img 
+                              src={post.photo_url} 
+                              alt="Letter attachment"
+                              onError={(e) => {
+                                e.target.style.display = 'none'
+                              }}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

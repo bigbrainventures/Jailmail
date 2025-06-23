@@ -1,0 +1,31 @@
+.go-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.08rem;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 18px rgba(102, 126, 234, 0.10);
+  padding: 0.7rem 1.5rem;
+  margin: 1.2rem 0 1.5rem 0;
+  cursor: pointer;
+  transition: transform 0.13s, box-shadow 0.13s, background 0.13s;
+  outline: none;
+}
+
+.go-back-btn:hover, .go-back-btn:focus {
+  background: linear-gradient(135deg, #5a67d8 0%, #6d28d9 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.18);
+}
+
+.go-back-arrow {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-right: 0.2em;
+  display: flex;
+  align-items: center;
+} 
